@@ -4,13 +4,15 @@ import 'package:bmi_calculator/widgets/left_bar.dart';
 import 'package:bmi_calculator/widgets/right_bar.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  TextEditingController _heightController = TextEditingController();
-  TextEditingController _weightController = TextEditingController();
+  final TextEditingController _heightController = TextEditingController();
+  final TextEditingController _weightController = TextEditingController();
   double _bmiResult = 0;
   String _textResult = "";
   @override
@@ -33,10 +35,11 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
+                SizedBox(
                   width: 130,
                   child: TextField(
-                    controller: _heightController,//textAlign: TextAlign.center,
+                    controller: _heightController,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 42,
                       fontWeight: FontWeight.w300,
@@ -54,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   )
                 ),
-                Container(
+                SizedBox(
                   width: 130,
                   child: TextField(
                     controller: _weightController,
@@ -96,30 +99,37 @@ class _HomeScreenState extends State<HomeScreen> {
               }
             });
           },
-          child: Container(
-            child: Text("Calculate", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: acccentHexColor),),
-          ),
+          child: 
+            Text(
+              "Calculate", 
+              style: TextStyle(
+                fontSize: 22, 
+                fontWeight: FontWeight.bold, 
+                color: acccentHexColor
+                ),
+            ),
         ),
             const SizedBox(
               height: 50,
               ),
-            Container(
-              child: Text(_bmiResult.toStringAsFixed(2), style: TextStyle(fontSize: 90, color: acccentHexColor),),
+            Text(_bmiResult.toStringAsFixed(2), 
+              style: TextStyle(
+                fontSize: 90, 
+                color: acccentHexColor
+              ),
             ),
             const SizedBox(
               height: 30,
               ),
             Visibility(
               visible: _textResult.isNotEmpty,
-              child: Container(
-                  child: Text(
-                    _textResult,
-                    style: TextStyle(
-                      fontSize: 32, 
-                      fontWeight: FontWeight.w400, 
-                      color: acccentHexColor),
-                      ),
-                )),
+              child: Text(
+                _textResult,
+                style: TextStyle(
+                  fontSize: 32, 
+                  fontWeight: FontWeight.w400, 
+                  color: acccentHexColor),
+                  )),
             const SizedBox(
               height: 10
               ),
@@ -142,13 +152,13 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20
               ),
             const RightBar(
-              barWidth: 50
+              barWidth: 45
               ),
             const SizedBox(
               height: 20
               ),
             const RightBar(
-              barWidth: 50
+              barWidth: 45
               ),
 
 
